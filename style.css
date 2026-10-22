@@ -1,0 +1,660 @@
+/* ==========================================================
+   style.css - Portofolio Rina Amalia Jalil
+   Tema: Navy & Emas Champagne (elegan, profesional)
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap');
+
+/* ---------- VARIABEL WARNA & FONT ---------- */
+:root {
+    --ink: #101a3d;            /* navy tua */
+    --ink-2: #17265a;          /* navy sedikit lebih terang */
+    --royal: #2b44b0;          /* biru aksen */
+    --gold: #c9a86a;           /* emas champagne */
+    --gold-deep: #8f6f2f;      /* emas gelap (untuk teks di latar terang) */
+    --gold-soft: rgba(201, 168, 106, .16);
+
+    --section-alt: #f6f3ee;    /* ivory hangat */
+    --kartu: #ffffff;
+    --garis-halus: rgba(16, 26, 61, .10);
+    --teks-judul: #101a3d;
+    --bayangan: 0 10px 30px rgba(16, 26, 61, .08);
+
+    --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --font-sans: "Jost", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --bs-body-font-family: var(--font-sans);
+}
+
+[data-bs-theme="dark"] {
+    --section-alt: #0f1833;
+    --kartu: #16213f;
+    --garis-halus: rgba(255, 255, 255, .10);
+    --teks-judul: #ead9b0;
+    --gold-deep: #d9bb83;
+    --royal: #8fa4ff;
+    --bayangan: 0 10px 30px rgba(0, 0, 0, .35);
+    --bs-body-bg: #0b1124;
+}
+
+/* ---------- DASAR ---------- */
+html { scroll-behavior: smooth; }
+body {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.7;
+    background: var(--bs-body-bg);
+}
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-serif); }
+section[id] { scroll-margin-top: 76px; }
+::selection { background: var(--gold); color: var(--ink); }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* ---------- TOMBOL ---------- */
+.btn { font-family: var(--font-sans); font-weight: 500; letter-spacing: .04em; }
+.btn-warning {
+    --bs-btn-color: var(--ink);
+    --bs-btn-bg: var(--gold);
+    --bs-btn-border-color: var(--gold);
+    --bs-btn-hover-color: var(--ink);
+    --bs-btn-hover-bg: #dcc18b;
+    --bs-btn-hover-border-color: #dcc18b;
+    --bs-btn-active-color: var(--ink);
+    --bs-btn-active-bg: #b8975a;
+    --bs-btn-active-border-color: #b8975a;
+}
+.jumbotron .btn {
+    border-radius: 50px;
+    padding: .75rem 2rem;
+    transition: transform .25s, box-shadow .25s, background-color .25s, color .25s;
+}
+.jumbotron .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0, 0, 0, .3); }
+.jumbotron .btn-outline-light { border-color: rgba(255, 255, 255, .55); }
+.jumbotron .btn-outline-light:hover { background: #fff; color: var(--ink); }
+
+/* ---------- NAVBAR ---------- */
+.navbar.bg-primary {
+    background-color: rgba(16, 26, 61, .94) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(201, 168, 106, .28);
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+.navbar-brand.fs-4 {
+    font-family: var(--font-serif);
+    font-size: 1.75rem !important;
+    font-weight: 600;
+    letter-spacing: .02em;
+    color: #fff;
+}
+.navbar .nav-link {
+    position: relative;
+    font-size: 1rem;
+    letter-spacing: .06em;
+    color: rgba(255, 255, 255, .72);
+    transition: color .25s;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link.active { color: #fff; }
+.navbar .nav-link::after {
+    content: "";
+    position: absolute;
+    left: .5rem; right: .5rem; bottom: 2px;
+    height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform .3s;
+    pointer-events: none;
+}
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after { transform: scaleX(1); }
+#tombolTema {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(201, 168, 106, .6);
+    color: #fff;
+    padding: 0;
+}
+#tombolTema:hover { background: rgba(201, 168, 106, .2); }
+
+/* ---------- HERO ---------- */
+.jumbotron {
+    position: relative;
+    overflow: hidden;
+    padding: 70px 0 240px;
+    color: #fff;
+    background:
+        radial-gradient(900px 500px at 12% -10%, rgba(201, 168, 106, .18), transparent 60%),
+        radial-gradient(700px 520px at 100% 35%, rgba(80, 110, 230, .30), transparent 60%),
+        linear-gradient(160deg, var(--ink) 0%, var(--ink-2) 100%);
+}
+/* cincin tipis dekoratif */
+.jumbotron::before,
+.jumbotron::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(201, 168, 106, .22);
+    pointer-events: none;
+}
+.jumbotron::before { width: 560px; height: 560px; top: -220px; left: -200px; }
+.jumbotron::after  { width: 360px; height: 360px; top: 170px; right: -120px; }
+.jumbotron > * { position: relative; z-index: 1; }
+
+.jumbotron img.foto {
+    width: 220px;
+    height: 330px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid rgba(255, 255, 255, .95);
+    outline: 1px solid var(--gold);          /* cincin emas di luar foto */
+    outline-offset: 9px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .45), 0 0 80px rgba(201, 168, 106, .18);
+    background: #000;
+}
+.jumbotron h1 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(3.2rem, 9vw, 6rem);
+    letter-spacing: .02em;
+    line-height: 1.05;
+    color: #fff;
+    margin-top: 2.2rem;
+}
+.jumbotron .lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+    letter-spacing: .12em;
+    color: #d8def5;
+}
+.jumbotron .fokus {
+    min-height: 2rem;
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--gold);
+}
+.kursor {
+    display: inline-block;
+    width: 2px; height: 1.1em;
+    margin-left: 3px;
+    background: var(--gold);
+    vertical-align: text-bottom;
+    animation: kedip 1s steps(1) infinite;
+}
+@keyframes kedip { 50% { opacity: 0; } }
+
+.jumbotron svg.gelombang {
+    position: absolute;
+    left: 0; bottom: -1px;
+    width: 100%; height: auto;
+    display: block;
+    z-index: 0;
+    pointer-events: none;
+}
+.jumbotron svg.gelombang path { fill: var(--section-alt); }
+
+/* ---------- BAGIAN & JUDUL ---------- */
+.bagian { padding: 100px 0; }
+.bagian-abu { background: var(--section-alt); }
+
+.judul {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    letter-spacing: .01em;
+    color: var(--teks-judul);
+    margin-bottom: .6rem;
+}
+.garis {
+    position: relative;
+    width: 110px; height: 1px;
+    margin: 0 auto 3.2rem;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.garis::after {
+    content: "";
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 8px; height: 8px;
+    background: var(--gold);
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* ---------- ABOUT ---------- */
+#about .fs-5 { font-family: var(--font-serif); font-size: 1.55rem !important; line-height: 1.6; color: var(--teks-judul); }
+.kotak-angka {
+    padding: 1.8rem 1rem;
+    text-align: center;
+    background: var(--kartu);
+    border: 1px solid var(--garis-halus);
+    border-top: 3px solid var(--gold);
+    border-radius: 14px;
+    box-shadow: var(--bayangan);
+}
+.angka-besar {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--royal);
+    margin-bottom: .4rem;
+}
+
+/* ---------- SKILL ---------- */
+.progress {
+    height: 6px;
+    border-radius: 6px;
+    background: var(--garis-halus);
+}
+.progress-bar {
+    width: 0;
+    background: linear-gradient(90deg, var(--royal), var(--gold));
+    border-radius: 6px;
+    transition: width 1.3s cubic-bezier(.22, .8, .3, 1);
+}
+.chip {
+    display: inline-block;
+    margin: .3rem;
+    padding: .5rem 1.15rem;
+    border: 1px solid rgba(201, 168, 106, .6);
+    border-radius: 50px;
+    background: transparent;
+    color: var(--gold-deep);
+    font-weight: 500;
+    letter-spacing: .03em;
+    transition: background-color .25s, color .25s, transform .25s;
+}
+.chip:hover { background: var(--gold); color: var(--ink); transform: translateY(-2px); }
+
+/* ---------- TIMELINE ---------- */
+.timeline { position: relative; max-width: 780px; margin: 0 auto; padding-left: 38px; }
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 10px; top: 8px; bottom: 8px;
+    width: 1px;
+    background: linear-gradient(var(--gold), rgba(201, 168, 106, .15));
+}
+.item-timeline { position: relative; margin-bottom: 2.4rem; }
+.item-timeline::before {
+    content: "";
+    position: absolute;
+    left: -37px; top: 8px;
+    width: 14px; height: 14px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    background: var(--section-alt);
+    box-shadow: 0 0 0 5px var(--gold-soft);
+}
+.item-timeline .tahun {
+    font-size: .95rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    color: var(--gold-deep);
+}
+.item-timeline h3 { font-size: 1.6rem !important; font-weight: 600; color: var(--teks-judul); }
+
+/* ========================================
+   EXPERIENCE / PENGALAMAN ORGANISASI
+   Tema: Navy & Emas Champagne
+======================================== */
+
+#experience {
+    background: var(--section-alt);
+    padding: 100px 0;
+}
+
+/* Paragraf pengantar */
+#experience > .container > p {
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--bs-body-color);
+    line-height: 1.8;
+}
+
+/* Pembungkus timeline */
+#experience .timeline {
+    position: relative;
+    max-width: 850px;
+    margin: 0 auto;
+    padding-left: 35px;
+}
+
+/* Garis vertikal timeline */
+#experience .timeline::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 9px;
+    width: 2px;
+    background: linear-gradient(
+        to bottom,
+        var(--gold),
+        rgba(201, 168, 106, 0.2)
+    );
+}
+
+/* Kartu setiap pengalaman */
+#experience .item-timeline {
+    position: relative;
+    margin-bottom: 30px;
+    padding: 25px 28px;
+    background: var(--kartu);
+    border: 1px solid var(--garis-halus);
+    border-left: 4px solid var(--gold);
+    border-radius: 14px;
+    box-shadow: var(--bayangan);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Titik pada timeline */
+#experience .item-timeline::before {
+    content: "";
+    position: absolute;
+    top: 30px;
+    left: -36px;
+    width: 16px;
+    height: 16px;
+    background: var(--gold);
+    border: 3px solid var(--section-alt);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--gold);
+}
+
+/* Efek saat kursor diarahkan ke kartu */
+#experience .item-timeline:hover {
+    transform: translateX(6px);
+    box-shadow: 0 14px 32px rgba(16, 26, 61, 0.13);
+}
+
+/* Judul organisasi */
+#experience .kepala-proyek h4 {
+    margin-bottom: 8px;
+    color: var(--teks-judul);
+    font-family: var(--font-serif);
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+/* Label jenis organisasi */
+#experience .kepala-proyek span {
+    display: inline-block;
+    color: var(--gold-deep);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+/* Deskripsi pengalaman */
+#experience .item-timeline p {
+    margin-top: 15px;
+    margin-bottom: 0;
+    color: var(--bs-body-color);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+/* Responsif untuk tablet dan HP */
+@media (max-width: 575.98px) {
+    #experience {
+        padding: 70px 0;
+    }
+
+    #experience .timeline {
+        padding-left: 28px;
+    }
+
+    #experience .timeline::before {
+        left: 6px;
+    }
+
+    #experience .item-timeline {
+        padding: 20px;
+        margin-bottom: 24px;
+    }
+
+    #experience .item-timeline::before {
+        left: -29px;
+        width: 14px;
+        height: 14px;
+    }
+
+    #experience .kepala-proyek h4 {
+        font-size: 1.45rem;
+    }
+
+    #experience .item-timeline p {
+        font-size: 0.95rem;
+    }
+}
+
+/* Menonaktifkan gerakan jika pengguna memilih reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    #experience .item-timeline {
+        transition: none;
+    }
+
+    #experience .item-timeline:hover {
+        transform: none;
+    }
+}
+
+/* =====================================
+   MY PROJECTS
+===================================== */
+
+#projects {
+    background: var(--section-alt);
+    padding: 100px 0;
+}
+
+/* Paragraf pengantar */
+#projects > .container > p {
+    max-width: 650px;
+    margin: 0 auto 45px;
+    color: var(--bs-body-color);
+    line-height: 1.8;
+}
+
+/* Kartu proyek */
+.card-project {
+    height: 100%;
+    background: var(--kartu);
+    border: 1px solid var(--garis-halus);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--bayangan);
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+/* Efek hover */
+.card-project:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 35px rgba(16, 26, 61, 0.15);
+}
+
+/* Foto proyek */
+.foto-project {
+    display: block;
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.4s ease;
+}
+
+/* Efek foto saat diarahkan kursor */
+.card-project:hover .foto-project {
+    transform: scale(1.04);
+}
+
+/* Bagian isi kartu */
+.isi-project {
+    padding: 25px;
+}
+
+/* Label kategori */
+.kategori-project {
+    display: inline-block;
+    margin-bottom: 14px;
+    padding: 7px 13px;
+    background: var(--gold-light);
+    color: var(--ink);
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+/* Judul proyek */
+.isi-project h3 {
+    margin-bottom: 12px;
+    color: var(--teks-judul);
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+/* Deskripsi proyek */
+.isi-project p {
+    margin-bottom: 0;
+    color: var(--bs-body-color);
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+/* Tampilan tablet */
+@media (max-width: 991.98px) {
+    #projects {
+        padding: 80px 0;
+    }
+
+    .foto-project {
+        height: 210px;
+    }
+
+    .isi-project {
+        padding: 22px;
+    }
+}
+
+/* Tampilan HP */
+@media (max-width: 575.98px) {
+    #projects {
+        padding: 65px 0;
+    }
+
+    .foto-project {
+        height: 220px;
+    }
+
+    .isi-project h3 {
+        font-size: 1.2rem;
+    }
+
+    .isi-project p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Mengurangi animasi jika diperlukan */
+@media (prefers-reduced-motion: reduce) {
+    .card-project,
+    .foto-project {
+        transition: none;
+    }
+
+    .card-project:hover,
+    .card-project:hover .foto-project {
+        transform: none;
+    }
+}
+
+/* ---------- CONTACT ---------- */
+#contact {
+    color: #fff;
+    background:
+        radial-gradient(700px 400px at 90% 0%, rgba(201, 168, 106, .16), transparent 60%),
+        linear-gradient(160deg, var(--ink) 0%, var(--ink-2) 100%);
+}
+#contact .judul { color: #fff; }
+#contact a { color: var(--gold); text-decoration: none; }
+#contact a:hover { text-decoration: underline; }
+.ikon-kontak {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 46px; height: 46px;
+    margin-right: .9rem;
+    border: 1px solid rgba(201, 168, 106, .55);
+    border-radius: 50%;
+    background: rgba(201, 168, 106, .12);
+    font-size: 1.15rem;
+}
+#contact .form-label { color: rgba(255, 255, 255, .8); letter-spacing: .04em; }
+#contact .form-control {
+    padding: .8rem 1rem;
+    border: 1px solid rgba(255, 255, 255, .22);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .07);
+    color: #fff;
+}
+#contact .form-control:focus {
+    border-color: var(--gold);
+    background: rgba(255, 255, 255, .11);
+    box-shadow: 0 0 0 .2rem rgba(201, 168, 106, .25);
+}
+#contact .btn-warning { padding: .75rem 2.2rem; border-radius: 50px; }
+
+footer {
+    padding: 26px 0;
+    background: #0a1230;
+    border-top: 1px solid rgba(201, 168, 106, .3);
+    color: #aeb7de;
+    font-size: .92rem;
+    letter-spacing: .05em;
+}
+
+/* ---------- TOMBOL KE ATAS ---------- */
+#keAtas {
+    position: fixed;
+    right: 22px; bottom: 22px;
+    width: 48px; height: 48px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 1.3rem;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s, transform .25s;
+}
+#keAtas:hover { transform: translateY(-3px); }
+#keAtas.tampil { opacity: 1; pointer-events: auto; }
+
+/* ---------- MUNCUL SAAT SCROLL ---------- */
+.muncul { opacity: 0; transform: translateY(26px); transition: opacity .8s, transform .8s; }
+.muncul.terlihat { opacity: 1; transform: none; }
+
+/* ---------- RESPONSIF ---------- */
+@media (max-width: 575.98px) {
+    .bagian { padding: 70px 0; }
+    .jumbotron { padding-bottom: 190px; }
+    .jumbotron img.foto { width: 190px; height: 285px; }
+    .angka-besar { font-size: 2.4rem; }
+}
+
+/* ---------- KURANGI GERAKAN (aksesibilitas) ---------- */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .muncul { opacity: 1; transform: none; transition: none; }
+    .kursor { animation: none; }
+    .progress-bar { transition: none; }
+    .kartu-proyek, .chip, .jumbotron .btn, #keAtas { transition: none; }
+}
